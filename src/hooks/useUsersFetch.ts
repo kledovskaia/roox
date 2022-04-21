@@ -25,6 +25,7 @@ export const useUsersFetch = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (users) return;
     setError(null);
     setIsLoading(true);
 

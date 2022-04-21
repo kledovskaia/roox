@@ -2,12 +2,14 @@ import { createContext, FC, ReactNode } from 'react';
 import { useUsersFetch } from '../hooks/useUsersFetch';
 import { SortBy, useUsersSort } from '../hooks/useUsersSort';
 
-export const UsersContext = createContext<{
-  users: User[] | null;
-  loading: boolean;
-  error: FetchError | null;
-  setSortType: (type: SortBy) => void;
-}>(null!);
+const initialState = {
+  users: null as User[] | null,
+  loading: false,
+  error: null as FetchError | null,
+  setSortType: (type: SortBy) => {},
+};
+
+export const UsersContext = createContext(initialState);
 
 type Props = {
   children: ReactNode;

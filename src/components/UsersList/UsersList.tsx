@@ -6,6 +6,8 @@ import UserPreview from '../UserPreview/UserPreview';
 const UsersList = () => {
   const { users } = useContext(UsersContext);
 
+  console.log(users);
+
   return (
     <section>
       <Header>
@@ -13,7 +15,7 @@ const UsersList = () => {
       </Header>
       <ul>
         {users?.map((user) => (
-          <UserPreview user={user} />
+          <UserPreview key={user.id} user={user} />
         ))}
       </ul>
     </section>

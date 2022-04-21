@@ -28,3 +28,11 @@ type Company = {
 type FetchError = {
   message: string;
 };
+
+type Field = {
+  name: string;
+  label: string;
+  value: string;
+};
+
+type FormSubmit = (values: Field[]) => void;

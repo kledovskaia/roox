@@ -12,13 +12,17 @@ const UserProfile = () => {
     setIsOnEdit((state) => !state);
   }, []);
 
+  const handleSubmit = useCallback((values: Field[]) => {
+    console.log(values);
+  }, []);
+
   return (
     <>
       <Header>
         <h2>Профиль пользователя</h2>
         <Button action={toggleIsOnEdit}>Редактировать</Button>
       </Header>
-      <UserForm initialState={user} />
+      <UserForm user={user} disabled={!isOnEdit} onSubmit={handleSubmit} />
     </>
   );
 };
