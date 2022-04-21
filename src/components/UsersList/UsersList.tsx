@@ -1,14 +1,10 @@
-import { FC, memo, useContext } from 'react';
-import { SelectedUserContext } from '../../context/SelectedUser';
+import { useContext } from 'react';
+import { UsersContext } from '../../context/Users';
 import Header from '../Header/Header';
 import UserPreview from '../UserPreview/UserPreview';
 
-type Props = {
-  users: User[];
-};
-
-const UsersList: FC<Props> = ({ users }) => {
-  const { select } = useContext(SelectedUserContext);
+const UsersList = () => {
+  const { users } = useContext(UsersContext);
 
   return (
     <section>
@@ -24,4 +20,4 @@ const UsersList: FC<Props> = ({ users }) => {
   );
 };
 
-export default memo(UsersList);
+export default UsersList;

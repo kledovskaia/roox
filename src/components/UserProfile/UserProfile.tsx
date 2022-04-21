@@ -1,17 +1,12 @@
-import { FC, memo, useContext } from 'react';
 import { useCallback, useState } from 'react';
-import { SelectedUserContext } from '../../context/SelectedUser';
+import { useUser } from '../../hooks/useUser';
 import Button from '../Button/Button';
 import Header from '../Header/Header';
 import UserForm from '../UserForm/UserForm';
 
-type Props = {
-  user: User;
-};
-
-const UserProfile: FC<Props> = ({ user }) => {
+const UserProfile = () => {
+  const { user } = useUser();
   const [isOnEdit, setIsOnEdit] = useState(false);
-  const { cancel } = useContext(SelectedUserContext);
 
   const toggleIsOnEdit = useCallback(() => {
     setIsOnEdit((state) => !state);
@@ -23,9 +18,9 @@ const UserProfile: FC<Props> = ({ user }) => {
         <h2>Профиль пользователя</h2>
         <Button action={toggleIsOnEdit}>Редактировать</Button>
       </Header>
-      <UserForm initialState={user} cancel={cancel} />
+      <UserForm initialState={user} />
     </>
   );
 };
 
-export default memo(UserProfile);
+export default UserProfile;

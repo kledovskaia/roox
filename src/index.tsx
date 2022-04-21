@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import { SelectedUserProvider } from './context/SelectedUser';
 import { UsersContextProvider } from './context/Users';
@@ -9,10 +10,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <UsersContextProvider>
-      <SelectedUserProvider>
-        <App />
-      </SelectedUserProvider>
-    </UsersContextProvider>
+    <BrowserRouter>
+      <UsersContextProvider>
+        <SelectedUserProvider>
+          <App />
+        </SelectedUserProvider>
+      </UsersContextProvider>
+    </BrowserRouter>
   </StrictMode>
 );
