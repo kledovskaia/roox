@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useCallback, useState } from 'react';
+import { createContext, FC, ReactNode, useCallback, useState } from 'react';
 
 export const SelectedUserContext = createContext<{
   selectedUser: User | null;
@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-export default function SelectedUserProvider({ children }: Props) {
+export const SelectedUserProvider: FC<Props> = ({ children }) => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const handleSelectUser = useCallback((user: User) => {
@@ -32,4 +32,4 @@ export default function SelectedUserProvider({ children }: Props) {
       {children}
     </SelectedUserContext.Provider>
   );
-}
+};

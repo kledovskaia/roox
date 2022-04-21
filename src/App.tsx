@@ -1,25 +1,28 @@
 import { useContext } from 'react';
-import { SelectedUserContext } from './context/SelectedUserProvider';
-import { useUsersFetch } from './hooks/useUsersFetch';
-import { useUsersSort } from './hooks/useUsersSort';
+import { Sidebar } from './components/Sidebar/Sidebar';
+import UserPreview from './components/UserPreview/UserPreview';
+import UserProfile from './components/UserProfile/UserProfile';
+import UsersList from './components/UsersList/UsersList';
+import { SelectedUserContext } from './context/SelectedUser';
+import { UsersContext } from './context/Users';
 
-export default function App() {
-  const { data, loading, error } = useUsersFetch();
-  const { users, handleSortTypeChange } = useUsersSort(data);
+export const App = () => {
+  const { users } = useContext(UsersContext);
   const { selectedUser } = useContext(SelectedUserContext);
-  // const [selectedUser, setSelectedUser] = useState(null); // CONTEXT!
 
   return (
-    <Layout>
-      <Sidebar handleSortTypeChange={handleSortTypeChange} />
-      <Main>
+    <div>
+      <aside>
+        <Sidebar />
+      </aside>
+      <main>
         {users && (
           <>
-            {!selectedUser && users.map((user) => <UserProfile {...user} />)}
-            {selectedUser && <UserList users={users} />}
+            {!selectedUser && <UsersList users={users} />}
+            {selectedUser && <UserProfile user={selectedUser} />}
           </>
         )}
-      </Main>
-    </Layout>
+      </main>
+    </div>
   );
-}
+};

@@ -26,5 +26,5 @@ export const useUsersSort = (data: User[] | null) => {
     [sortBy]
   );
 
-  return { users: sortedUsers, handleSortTypeChange } as const;
+  return { users: sortedUsers, setSortType: handleSortTypeChange } as const;
 };

@@ -1,4 +1,15 @@
-export default function UsersList() {
+import { FC, memo, useContext } from 'react';
+import { SelectedUserContext } from '../../context/SelectedUser';
+import Header from '../Header/Header';
+import UserPreview from '../UserPreview/UserPreview';
+
+type Props = {
+  users: User[];
+};
+
+const UsersList: FC<Props> = ({ users }) => {
+  const { select } = useContext(SelectedUserContext);
+
   return (
     <section>
       <Header>
@@ -6,9 +17,11 @@ export default function UsersList() {
       </Header>
       <ul>
         {users?.map((user) => (
-          <UserPreview {...user} />
+          <UserPreview user={user} />
         ))}
       </ul>
     </section>
   );
-}
+};
+
+export default memo(UsersList);
