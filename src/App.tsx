@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from 'react';
+import { SelectedUserContext } from './context/SelectedUserProvider';
+import { useUsersFetch } from './hooks/useUsersFetch';
+import { useUsersSort } from './hooks/useUsersSort';
 
-function App() {
+export default function App() {
+  const { data, loading, error } = useUsersFetch();
+  const { users, handleSortTypeChange } = useUsersSort(data);
+  const { selectedUser } = useContext(SelectedUserContext);
+  // const [selectedUser, setSelectedUser] = useState(null); // CONTEXT!
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Sidebar handleSortTypeChange={handleSortTypeChange} />
+      <Main>
+        {users && (
+          <>
+            {!selectedUser && users.map((user) => <UserProfile {...user} />)}
+            {selectedUser && <UserList users={users} />}
+          </>
+        )}
+      </Main>
+    </Layout>
   );
 }
-
-export default App;
