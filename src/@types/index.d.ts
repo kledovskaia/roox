@@ -1,38 +1,31 @@
-type User = {
-  address: Address;
-  company: Company;
-  email: string;
-  id: number;
-  name: string;
-  phone: string;
-  username: string;
-  website: string;
-};
+declare module '*.svg' {
+  import React = require('react');
+  export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
+  const src: string;
+  export default src;
+}
+declare module '*.jpg' {
+  const content: string;
+  export default content;
+}
 
-type Address = {
-  city: string;
-  geo: Coordinates;
-  street: string;
-  suite: string;
-  zipcode: string;
-};
+declare module '*.png' {
+  const content: string;
+  export default content;
+}
 
-type Coordinates = { lat: string; lng: string };
+declare module '*.jpeg' {
+  const content: string;
+  export default content;
+}
 
-type Company = {
-  bs: string;
-  catchPhrase: string;
-  name: string;
-};
-
-type FetchError = {
-  message: string;
-};
-
-type Field = {
-  name: string;
-  label: string;
-  value: string;
-};
-
-type FormSubmit = (values: Field[]) => void;
+declare module '*.json' {
+  const content: string;
+  export default content;
+}
+declare module '*.module.scss' {
+  const content: {
+    [key in string]: string;
+  };
+  export default content;
+}

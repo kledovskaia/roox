@@ -1,0 +1,31 @@
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(#000000, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #25b09b);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - 0.8rem),
+    #000 0
+  );
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
