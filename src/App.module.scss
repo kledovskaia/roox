@@ -1,3 +1,5 @@
+@import './styles/variables';
+
 .app {
   height: 100vh;
   display: flex;
@@ -5,7 +7,7 @@
   &__sidebar {
     flex: 1;
     flex-basis: 15.2rem;
-    background-color: #bdbdbd;
+    background-color: $secondary;
     display: flex;
     justify-content: flex-end;
   }

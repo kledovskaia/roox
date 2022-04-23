@@ -6,7 +6,7 @@
   border: 0;
   border-radius: 0.5rem;
   background-color: $primary;
-  color: #ffffff;
+  color: $light;
   font-size: 1.2rem;
   transition: background-color 0.2s;
 
@@ -23,10 +23,8 @@
   &_disabled {
     pointer-events: none;
     background-color: $secondary;
-    cursor: not-allowed;
     &:hover {
       background-color: $secondary;
-      cursor: not-allowed;
     }
   }
 }

@@ -1,8 +1,10 @@
+@import '../../styles/variables';
+
 .user {
   max-width: 42rem;
   width: 90%;
 
-  background-color: #f3f3f3;
+  background-color: $secondary-light;
   border-radius: 0.8rem;
   padding: 1rem;
 
@@ -30,7 +32,7 @@
     }
   }
   &__title {
-    color: #a3a3a3;
+    color: $secondary-dark;
   }
 
   &__link {
