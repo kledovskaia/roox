@@ -3,7 +3,7 @@ import { useUsersFetch } from '../hooks/useUsersFetch';
 import { SortBy, useUsersSort } from '../hooks/useUsersSort';
 
 const initialState = {
-  users: null as User[] | null,
+  users: null as FetchedUser[] | null,
   loading: false,
   error: null as FetchError | null,
   setSortType: (type: SortBy) => {},

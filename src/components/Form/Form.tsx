@@ -19,9 +19,7 @@ const Form: FC<Props> = ({ fields, disabled, onSubmit, validationSchema }) => {
         Object.entries(fields).map(([name, { value }]) => [name, value])
       )}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log(JSON.stringify(values));
-      }}
+      onSubmit={onSubmit}
     >
       {({ errors, touched, values, handleChange }) => (
         <FormikForm className={s.form}>

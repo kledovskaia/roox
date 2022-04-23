@@ -12,9 +12,14 @@ const UserProfile = () => {
     setIsOnEdit((state) => !state);
   }, []);
 
-  const handleSubmit = useCallback((values: Fields) => {
-    console.log(values);
-  }, []);
+  const handleSubmit = useCallback(
+    (values: {
+      [key in keyof Fields]: string;
+    }) => {
+      console.log(JSON.stringify(values));
+    },
+    []
+  );
 
   return (
     <>

@@ -17,6 +17,11 @@ const UsersList = () => {
           <UserPreview key={user.id} user={user} />
         ))}
       </ul>
+      {!!users?.length && (
+        <p className={s.usersList__total}>
+          Найдено {users.length} пользователей
+        </p>
+      )}
     </section>
   );
 };

@@ -13,11 +13,26 @@ const sortOrder = {
 
 export const sort: Sort = ({ items, sortBy, orderBy }) => {
   const sortedItems = [...items].sort((a, b) => {
-    const aValue = a[sortBy as keyof typeof a];
-    const bValue = b[sortBy as keyof typeof b];
+    const aValue = deepPick(a, sortBy);
+    const bValue = deepPick(b, sortBy);
     return sortOrder[orderBy](aValue, bValue);
   });
   return sortedItems;
+};
+
+const deepPick = (
+  obj: {
+    [key in string]: any;
+  },
+  path: string
+) => {
+  let levels = path.split('.').reverse();
+  if (levels.length === 1) return obj[levels[0]];
+  let result = obj;
+  while (levels.length) {
+    result = result[levels.pop() as keyof typeof result];
+  }
+  return result;
 };
 
 export const selectUserData = (user: FetchedUser): User => ({

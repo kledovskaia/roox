@@ -1,9 +1,10 @@
 import { FC, memo, useEffect, useState } from 'react';
 import Form from '../Form/Form';
 import * as yup from 'yup';
+import { selectUserData } from '../../helpers';
 
 type Props = {
-  user?: User;
+  user?: FetchedUser;
   disabled: boolean;
   onSubmit: FormSubmit;
 };
@@ -26,8 +27,14 @@ const userSchema = yup.object({
   email: yup.string().email().required(),
   street: yup.string().required(),
   city: yup.string().required(),
-  zipcode: yup.string().required(),
-  phone: yup.string().required(),
+  zipcode: yup
+    .string()
+    .matches(/^(\d+?[-()]*)+$/)
+    .required(),
+  phone: yup
+    .string()
+    .matches(/^(\d+?[-()]*)+$/)
+    .required(),
   website: yup.string().required(),
   comment: yup.string(),
 });
@@ -39,11 +46,12 @@ const UserForm: FC<Props> = ({ user, disabled, onSubmit }) => {
 
   useEffect(() => {
     if (user) {
+      const formattedUser = selectUserData(user);
       const fieldEntries = Object.entries(fields).map(([key, value]) => [
         key,
         {
           ...value,
-          value: user[key as keyof typeof user],
+          value: formattedUser[key as keyof typeof formattedUser],
         },
       ]);
       setFormFields(Object.fromEntries(fieldEntries));

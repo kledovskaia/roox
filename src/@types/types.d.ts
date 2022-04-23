@@ -51,4 +51,6 @@ type Fields = {
   };
 };
 
-type FormSubmit = (values: Fields) => void;
+type FormSubmit = (values: {
+  [key in keyof Fields]: string;
+}) => void;

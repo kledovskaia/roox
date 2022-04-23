@@ -5,7 +5,7 @@ import { UsersContext } from '../context/Users';
 export const useUser = () => {
   const { users } = useContext(UsersContext);
   const { username } = useParams();
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<FetchedUser>();
 
   useEffect(() => {
     if (!users || !username) return;

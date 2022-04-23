@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react';
+import { useContext } from 'react';
 import { UsersContext } from '../../context/Users';
 import { SortBy } from '../../hooks/useUsersSort';
 import Button from '../Button/Button';
@@ -10,7 +10,7 @@ const options: { type: SortBy; label: string }[] = [
     label: 'по имени',
   },
   {
-    type: 'city',
+    type: 'address.city',
     label: 'по городу',
   },
 ];

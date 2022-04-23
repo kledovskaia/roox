@@ -5,7 +5,7 @@ const url = 'https://jsonplaceholder.typicode.com/users';
 
 type UseFetchUsersResult = SuccessResult | LoadingResult | ErrorResult;
 type SuccessResult = {
-  data: User[];
+  data: FetchedUser[];
   loading: false;
   error: null;
 };
@@ -21,7 +21,7 @@ type ErrorResult = {
 };
 
 export const useUsersFetch = () => {
-  const [users, setUsers] = useState<User[] | null>(null);
+  const [users, setUsers] = useState<FetchedUser[] | null>(null);
   const [error, setError] = useState<FetchError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,7 +34,7 @@ export const useUsersFetch = () => {
       try {
         const response = await fetch(url);
         const json: FetchedUser[] = await response.json();
-        setUsers(json.map(selectUserData));
+        setUsers(json);
       } catch (error) {
         setError(error as FetchError);
       } finally {
