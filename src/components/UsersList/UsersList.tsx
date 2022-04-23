@@ -2,18 +2,17 @@ import { useContext } from 'react';
 import { UsersContext } from '../../context/Users';
 import Header from '../Header/Header';
 import UserPreview from '../UserPreview/UserPreview';
+import s from './UsersList.module.scss';
 
 const UsersList = () => {
   const { users } = useContext(UsersContext);
 
-  console.log(users);
-
   return (
-    <section>
+    <section className={s.usersList}>
       <Header>
         <h2>Список пользователей</h2>
       </Header>
-      <ul>
+      <ul className={s.usersList__list}>
         {users?.map((user) => (
           <UserPreview key={user.id} user={user} />
         ))}

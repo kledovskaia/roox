@@ -1,0 +1,13 @@
+.usersList {
+  padding-bottom: 1.4rem;
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    & > * + * {
+      margin-top: 1.4rem;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-type User = {
+type FetchedUser = {
   address: Address;
   company: Company;
   email: string;
@@ -7,6 +7,20 @@ type User = {
   phone: string;
   username: string;
   website: string;
+};
+
+type User = {
+  email: string;
+  id: number;
+  name: string;
+  phone: string;
+  username: string;
+  website: string;
+  company: Company['name'];
+  street: Address['street'];
+  city: Address['city'];
+  zipcode: Address['zipcode'];
+  comment?: string;
 };
 
 type Address = {

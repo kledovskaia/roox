@@ -7,7 +7,17 @@ type Props = {
 };
 
 const Button: FC<Props> = ({ children, action }) => {
-  return <button className={s.button}>{children}</button>;
+  return (
+    <button
+      onClick={action}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') action();
+      }}
+      className={s.button}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default memo(Button);

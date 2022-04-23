@@ -16,11 +16,11 @@ const UserPreview: FC<Props> = ({ user }) => {
         </li>
         <li className={s.user__listItem}>
           <span className={s.user__title}>город:</span>
-          <span className={s.user__value}>{user.address.city}</span>
+          <span className={s.user__value}>{user.city}</span>
         </li>
         <li className={s.user__listItem}>
           <span className={s.user__title}>компания:</span>
-          <span className={s.user__value}>{user.company.name}</span>
+          <span className={s.user__value}>{user.company}</span>
         </li>
       </ul>
       <Link className={s.user__link} to={user.username}>

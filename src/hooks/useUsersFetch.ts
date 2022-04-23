@@ -19,6 +19,19 @@ type ErrorResult = {
   error: FetchError;
 };
 
+const selectUserData = (user: FetchedUser): User => ({
+  email: user.email,
+  id: user.id,
+  name: user.name,
+  phone: user.phone,
+  username: user.username,
+  website: user.website,
+  street: user.address.street,
+  city: user.address.city,
+  zipcode: user.address.zipcode,
+  company: user.company.name,
+});
+
 export const useUsersFetch = () => {
   const [users, setUsers] = useState<User[] | null>(null);
   const [error, setError] = useState<FetchError | null>(null);
@@ -32,8 +45,8 @@ export const useUsersFetch = () => {
     async function fetchUsers() {
       try {
         const response = await fetch(url);
-        const json: User[] = await response.json();
-        setUsers(json);
+        const json: FetchedUser[] = await response.json();
+        setUsers(json.map(selectUserData));
       } catch (error) {
         setError(error as FetchError);
       } finally {

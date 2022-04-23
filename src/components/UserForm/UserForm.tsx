@@ -39,18 +39,13 @@ const UserForm: FC<Props> = ({ user, disabled, onSubmit }) => {
 
   useEffect(() => {
     if (user) {
-      const fieldEntries = Object.entries(fields).map(([key, value]) => {
-        const targetObj = ['street', 'city', 'zipcode'].includes(key)
-          ? user.address
-          : user;
-        return [
-          key,
-          {
-            ...value,
-            value: targetObj[key as keyof typeof targetObj] || value,
-          },
-        ];
-      });
+      const fieldEntries = Object.entries(fields).map(([key, value]) => [
+        key,
+        {
+          ...value,
+          value: user[key as keyof typeof user] || value,
+        },
+      ]);
       setFormFields(Object.fromEntries(fieldEntries));
     }
   }, [user]);

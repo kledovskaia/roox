@@ -1,5 +1,5 @@
 .app {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
 
   &__sidebar {
@@ -10,7 +10,16 @@
     justify-content: flex-end;
   }
   &__main {
-    flex: 4;
+    overflow: hidden;
+    overflow-y: auto;
+    flex: 2;
     padding: 0.5rem 3.5rem;
+  }
+
+  @media screen and (max-width: 55rem) {
+    &__sidebar {
+      flex-grow: 0;
+      justify-content: flex-start;
+    }
   }
 }
