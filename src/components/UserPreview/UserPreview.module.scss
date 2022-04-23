@@ -1,0 +1,28 @@
+.user {
+  width: 42rem;
+
+  background-color: #f3f3f3;
+  border-radius: 0.8rem;
+  padding: 1rem;
+
+  display: flex;
+
+  &__list {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  &__listItem {
+    & > * + * {
+      margin-left: 0.7rem;
+    }
+  }
+  &__title {
+    color: #a3a3a3;
+  }
+
+  &__link {
+    align-self: flex-end;
+  }
+}

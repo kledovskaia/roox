@@ -20,7 +20,7 @@ export const Sidebar = () => {
 
   return (
     <div className={s.sidebar}>
-      <p>Сортировка</p>
+      <p className={s.sidebar__title}>Сортировка</p>
       <div className={s.sidebar__controls}>
         {options.map((option) => (
           <Button action={() => setSortType(option.type)}>

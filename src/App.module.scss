@@ -3,9 +3,14 @@
   display: flex;
 
   &__sidebar {
+    flex: 1;
     flex-basis: 15.2rem;
     background-color: #bdbdbd;
+    display: flex;
+    justify-content: flex-end;
   }
   &__main {
+    flex: 4;
+    padding: 0.5rem 3.5rem;
   }
 }
