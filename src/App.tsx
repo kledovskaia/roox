@@ -5,17 +5,18 @@ import Spinner from './components/Spinner/Spinner';
 import UserProfile from './components/UserProfile/UserProfile';
 import UsersList from './components/UsersList/UsersList';
 import { UsersContext } from './context/Users';
+import s from './App.module.scss';
 
 export const App = () => {
   const { loading } = useContext(UsersContext);
 
   return (
-    <div>
+    <div className={s.app}>
       <Spinner loading={loading} />
-      <aside>
+      <aside className={s.app__sidebar}>
         <Sidebar />
       </aside>
-      <main>
+      <main className={s.app__main}>
         <Routes>
           <Route path="/" element={<UsersList />} />
           <Route path="/:username" element={<UserProfile />} />

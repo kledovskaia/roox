@@ -1,0 +1,11 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+
+  &__sidebar {
+    flex-basis: 15.2rem;
+    background-color: #bdbdbd;
+  }
+  &__main {
+  }
+}
