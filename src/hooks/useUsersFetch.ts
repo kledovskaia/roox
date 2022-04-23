@@ -23,7 +23,7 @@ type ErrorResult = {
 export const useUsersFetch = () => {
   const [users, setUsers] = useState<FetchedUser[] | null>(null);
   const [error, setError] = useState<FetchError | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (users) return;

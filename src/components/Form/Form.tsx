@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { Formik, Form as FormikForm, Field } from 'formik';
 import { FC, Fragment, memo } from 'react';
 import Button from '../Button/Button';
-import { UserSchema } from '../UserForm/UserForm';
+import UserForm, { UserSchema } from '../UserForm/UserForm';
 import s from './Form.module.scss';
 
 type Props = {
@@ -15,35 +15,41 @@ type Props = {
 const Form: FC<Props> = ({ fields, disabled, onSubmit, validationSchema }) => {
   return (
     <Formik
-      initialValues={Object.fromEntries(
-        Object.entries(fields).map(([name, { value }]) => [name, value])
-      )}
+      initialValues={
+        Object.fromEntries(
+          Object.entries(fields).map(([name, { value }]) => [name, value])
+        ) as unknown as User
+      }
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
       {({ errors, touched, values, handleChange }) => (
         <FormikForm className={s.form}>
           <div className={s.form__fieldsContainer}>
-            {Object.entries(fields).map(([name, { label, tag }]) => (
-              <Fragment key={name}>
-                <label htmlFor={name}>{label}</label>
-                <Field
-                  disabled={disabled}
-                  className={classNames(s.form__field, {
-                    [s.form__field_error]: touched[name] && errors[name],
-                    [s[`form__field_${tag}`]]: true,
-                  })}
-                  name={name}
-                  type="text"
-                  as={tag}
-                  value={values[name]}
-                  onChange={handleChange}
-                />
-              </Fragment>
-            ))}
+            {Object.entries(fields).map(([name, { label, tag }]) => {
+              return (
+                <Fragment key={name}>
+                  <label htmlFor={name}>{label}</label>
+                  <Field
+                    disabled={disabled}
+                    className={classNames(s.form__field, {
+                      [s.form__field_error]:
+                        touched[name as keyof typeof touched] &&
+                        errors[name as keyof typeof errors],
+                      [s[`form__field_${tag}`]]: true,
+                    })}
+                    name={name}
+                    type="text"
+                    as={tag}
+                    value={values[name as keyof typeof values]}
+                    onChange={handleChange}
+                  />
+                </Fragment>
+              );
+            })}
           </div>
           <div className={s.form__buttonsContainer}>
-            <Button type="submit" disabled={disabled}>
+            <Button submit type="submit" disabled={disabled}>
               Отправить
             </Button>
           </div>

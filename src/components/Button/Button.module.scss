@@ -1,18 +1,32 @@
+@import '../../styles/variables';
+
 .button {
   cursor: pointer;
   padding: 0.5rem 1.5rem;
   border: 0;
   border-radius: 0.5rem;
-  background-color: #4b51ef;
+  background-color: $primary;
   color: #ffffff;
   font-size: 1.2rem;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #2d31b7;
+    background-color: $primary-dark;
   }
-  &:disabled {
-    background-color: #afafaf;
+  &_submit {
+    background-color: $success;
+
+    &:hover {
+      background-color: $success-dark;
+    }
+  }
+  &_disabled {
+    pointer-events: none;
+    background-color: $secondary;
     cursor: not-allowed;
+    &:hover {
+      background-color: $secondary;
+      cursor: not-allowed;
+    }
   }
 }

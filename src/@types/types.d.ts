@@ -7,6 +7,7 @@ type FetchedUser = {
   phone: string;
   username: string;
   website: string;
+  comment?: string;
 };
 
 type User = {
@@ -44,13 +45,11 @@ type FetchError = {
 };
 
 type Fields = {
-  [key in string]: {
+  [key in keyof typeof User]: {
     label: string;
     value: string;
     tag: string;
   };
 };
 
-type FormSubmit = (values: {
-  [key in keyof Fields]: string;
-}) => void;
+type FormSubmit = (values: User) => void;

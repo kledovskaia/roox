@@ -6,12 +6,12 @@ import s from './Sidebar.module.scss';
 
 const options: { type: SortBy; label: string }[] = [
   {
-    type: 'name',
-    label: 'по имени',
-  },
-  {
     type: 'address.city',
     label: 'по городу',
+  },
+  {
+    type: 'company.name',
+    label: 'по компании',
   },
 ];
 

@@ -3,12 +3,6 @@ import Form from '../Form/Form';
 import * as yup from 'yup';
 import { selectUserData } from '../../helpers';
 
-type Props = {
-  user?: FetchedUser;
-  disabled: boolean;
-  onSubmit: FormSubmit;
-};
-
 const fields = {
   name: { label: 'Name', value: '', tag: 'input' },
   username: { label: 'User name', value: '', tag: 'input' },
@@ -31,27 +25,29 @@ const userSchema = yup.object({
     .string()
     .matches(/^(\d+?[-()]*)+$/)
     .required(),
-  phone: yup
-    .string()
-    .matches(/^(\d+?[-()]*)+$/)
-    .required(),
+  phone: yup.string().required(),
   website: yup.string().required(),
   comment: yup.string(),
 });
 
 export type UserSchema = typeof userSchema;
 
+type Props = {
+  user?: User;
+  disabled: boolean;
+  onSubmit: FormSubmit;
+};
+
 const UserForm: FC<Props> = ({ user, disabled, onSubmit }) => {
   const [formFields, setFormFields] = useState(null);
 
   useEffect(() => {
     if (user) {
-      const formattedUser = selectUserData(user);
       const fieldEntries = Object.entries(fields).map(([key, value]) => [
         key,
         {
           ...value,
-          value: formattedUser[key as keyof typeof formattedUser],
+          value: user[key as keyof typeof user],
         },
       ]);
       setFormFields(Object.fromEntries(fieldEntries));

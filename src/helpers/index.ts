@@ -36,8 +36,8 @@ const deepPick = (
 };
 
 export const selectUserData = (user: FetchedUser): User => ({
-  email: user.email,
   id: user.id,
+  email: user.email,
   name: user.name,
   phone: user.phone,
   username: user.username,
@@ -46,4 +46,27 @@ export const selectUserData = (user: FetchedUser): User => ({
   city: user.address.city,
   zipcode: user.address.zipcode,
   company: user.company.name,
+});
+
+export const updateUserData = (
+  old: FetchedUser,
+  newFormatted: User
+): FetchedUser => ({
+  ...old,
+  address: {
+    ...old.address,
+    street: newFormatted.street,
+    city: newFormatted.city,
+    zipcode: newFormatted.zipcode,
+  },
+  company: {
+    ...old.company,
+    name: newFormatted.company,
+  },
+  email: newFormatted.email,
+  name: newFormatted.name,
+  phone: newFormatted.phone,
+  username: newFormatted.username,
+  website: newFormatted.website,
+  comment: newFormatted.comment,
 });

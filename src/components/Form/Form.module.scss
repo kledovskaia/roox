@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .form {
   font-size: 1rem;
   &__field {
@@ -5,7 +7,7 @@
       margin-top: 1rem;
     }
     padding: 0.5rem 1rem;
-    border: 0.1rem solid #d8d8d8;
+    border: 0.1rem solid $secondary-medium;
     border-radius: 0.5rem;
 
     &:disabled {
@@ -35,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 0.1rem solid #f3f3f3;
+    border: 0.1rem solid $secondary-light;
     border-radius: 0.8rem;
   }
   &__buttonsContainer {
