@@ -18,12 +18,20 @@
     & > * {
       max-width: 114rem;
     }
+    @media screen and (max-width: 25rem) {
+      padding: 0.5rem 1rem;
+    }
   }
 
   @media screen and (max-width: 55rem) {
     &__sidebar {
       flex-grow: 0;
       justify-content: flex-start;
+    }
+  }
+  @media screen and (max-width: 40rem) {
+    &__sidebar {
+      flex-basis: 0;
     }
   }
 }

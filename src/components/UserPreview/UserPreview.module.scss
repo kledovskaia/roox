@@ -1,11 +1,16 @@
 .user {
-  width: 42rem;
+  max-width: 42rem;
+  width: 90%;
 
   background-color: #f3f3f3;
   border-radius: 0.8rem;
   padding: 1rem;
 
   display: flex;
+
+  @media screen and (max-width: 35rem) {
+    flex-direction: column;
+  }
 
   &__list {
     flex: 1;
@@ -14,6 +19,12 @@
     list-style-type: none;
   }
   &__listItem {
+    display: flex;
+
+    @media screen and (max-width: 25rem) {
+      flex-direction: column;
+    }
+    white-space: nowrap;
     & > * + * {
       margin-left: 0.7rem;
     }
