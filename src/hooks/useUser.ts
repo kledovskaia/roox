@@ -4,7 +4,7 @@ import { UsersContext } from '../context/Users';
 
 export const useUser = () => {
   const [loading, setLoading] = useState(true);
-  const { users } = useContext(UsersContext);
+  const { users, updateUser } = useContext(UsersContext);
   const { username } = useParams();
   const [user, setUser] = useState<FetchedUser>();
 
@@ -17,5 +17,5 @@ export const useUser = () => {
     setUser(users.find((user) => user.username === username));
   }, [username, users]);
 
-  return { user, loading } as const;
+  return { user, updateUser, loading } as const;
 };

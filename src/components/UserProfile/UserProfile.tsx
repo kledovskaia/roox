@@ -8,7 +8,7 @@ import Header from '../Header/Header';
 import UserForm from '../UserForm/UserForm';
 
 const UserProfile = () => {
-  const { user, loading: userLoading } = useUser();
+  const { user, loading: userLoading, updateUser } = useUser();
   const { loading: usersLoading } = useContext(UsersContext);
   const [isOnEdit, setIsOnEdit] = useState(false);
   const [formattedUser, setFormattedUser] = useState<User>();
@@ -27,6 +27,8 @@ const UserProfile = () => {
       if (!user) return;
       const updatedUser = updateUserData(user, values);
       console.log(JSON.stringify(updatedUser));
+      updateUser(updatedUser);
+      alert('Updated!');
     },
     [user]
   );

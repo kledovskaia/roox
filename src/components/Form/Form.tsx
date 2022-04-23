@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { Formik, Form as FormikForm, Field } from 'formik';
 import { FC, Fragment, memo } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import UserForm, { UserSchema } from '../UserForm/UserForm';
 import s from './Form.module.scss';
@@ -49,6 +50,7 @@ const Form: FC<Props> = ({ fields, disabled, onSubmit, validationSchema }) => {
             })}
           </div>
           <div className={s.form__buttonsContainer}>
+            <Link to="/">На Главную</Link>
             <Button submit type="submit" disabled={disabled}>
               Отправить
             </Button>

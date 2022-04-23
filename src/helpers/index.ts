@@ -59,10 +59,6 @@ export const updateUserData = (
     city: newFormatted.city,
     zipcode: newFormatted.zipcode,
   },
-  company: {
-    ...old.company,
-    name: newFormatted.company,
-  },
   email: newFormatted.email,
   name: newFormatted.name,
   phone: newFormatted.phone,

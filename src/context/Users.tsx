@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   error: null as FetchError | null,
   setSortType: (type: SortBy) => {},
+  updateUser: (updatedUser: FetchedUser) => {},
 };
 
 export const UsersContext = createContext(initialState);
@@ -17,7 +18,7 @@ type Props = {
 
 export const UsersContextProvider: FC<Props> = ({ children }) => {
   const { data, loading, error } = useUsersFetch();
-  const { users, setSortType } = useUsersSort(data);
+  const { users, setSortType, updateUser } = useUsersSort(data);
 
   return (
     <UsersContext.Provider
@@ -26,6 +27,7 @@ export const UsersContextProvider: FC<Props> = ({ children }) => {
         loading,
         error,
         setSortType,
+        updateUser,
       }}
     >
       {children}

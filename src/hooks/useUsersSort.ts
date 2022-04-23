@@ -28,5 +28,21 @@ export const useUsersSort = (users: FetchedUser[] | null) => {
     [sortBy]
   );
 
-  return { users: sortedUsers, setSortType: handleSortTypeChange } as const;
+  const handleUpdateUser = useCallback((updatedUser: FetchedUser) => {
+    setSortedUsers((users) =>
+      [...(users || [])]?.map((user) => {
+        if (user.id === updatedUser.id) {
+          return { ...user, ...updatedUser };
+        } else {
+          return user;
+        }
+      })
+    );
+  }, []);
+
+  return {
+    users: sortedUsers,
+    updateUser: handleUpdateUser,
+    setSortType: handleSortTypeChange,
+  } as const;
 };
