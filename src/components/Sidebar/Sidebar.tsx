@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { UsersContext } from '../../context/Users';
 import { SortBy } from '../../hooks/useUsersSort';
 import Button from '../Button/Button';

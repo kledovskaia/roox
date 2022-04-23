@@ -47,6 +47,7 @@ type Fields = {
   [key in string]: {
     label: string;
     value: string;
+    tag: string;
   };
 };
 

@@ -14,6 +14,10 @@
     overflow-y: auto;
     flex: 2;
     padding: 0.5rem 3.5rem;
+
+    & > * {
+      max-width: 114rem;
+    }
   }
 
   @media screen and (max-width: 55rem) {

@@ -9,15 +9,15 @@ type Props = {
 };
 
 const fields = {
-  name: { label: 'Name', value: '' },
-  username: { label: 'User name', value: '' },
-  email: { label: 'Email', value: '' },
-  street: { label: 'Street', value: '' },
-  city: { label: 'City', value: '' },
-  zipcode: { label: 'Zip code', value: '' },
-  phone: { label: 'Phone', value: '' },
-  website: { label: 'Website', value: '' },
-  comment: { label: 'Comment', value: '' },
+  name: { label: 'Name', value: '', tag: 'input' },
+  username: { label: 'User name', value: '', tag: 'input' },
+  email: { label: 'Email', value: '', tag: 'input' },
+  street: { label: 'Street', value: '', tag: 'input' },
+  city: { label: 'City', value: '', tag: 'input' },
+  zipcode: { label: 'Zip code', value: '', tag: 'input' },
+  phone: { label: 'Phone', value: '', tag: 'input' },
+  website: { label: 'Website', value: '', tag: 'input' },
+  comment: { label: 'Comment', value: '', tag: 'textarea' },
 };
 
 const userSchema = yup.object({
@@ -35,7 +35,7 @@ const userSchema = yup.object({
 export type UserSchema = typeof userSchema;
 
 const UserForm: FC<Props> = ({ user, disabled, onSubmit }) => {
-  const [formFields, setFormFields] = useState(fields);
+  const [formFields, setFormFields] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -43,7 +43,7 @@ const UserForm: FC<Props> = ({ user, disabled, onSubmit }) => {
         key,
         {
           ...value,
-          value: user[key as keyof typeof user] || value,
+          value: user[key as keyof typeof user],
         },
       ]);
       setFormFields(Object.fromEntries(fieldEntries));
@@ -51,12 +51,14 @@ const UserForm: FC<Props> = ({ user, disabled, onSubmit }) => {
   }, [user]);
 
   return (
-    <Form
-      fields={formFields}
-      disabled={disabled}
-      onSubmit={onSubmit}
-      validationSchema={userSchema}
-    />
+    formFields && (
+      <Form
+        fields={formFields}
+        disabled={disabled}
+        onSubmit={onSubmit}
+        validationSchema={userSchema}
+      />
+    )
   );
 };
 

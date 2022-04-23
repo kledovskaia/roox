@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { selectUserData } from '../helpers';
 
 const url = 'https://jsonplaceholder.typicode.com/users';
 
@@ -18,19 +19,6 @@ type ErrorResult = {
   loading: false;
   error: FetchError;
 };
-
-const selectUserData = (user: FetchedUser): User => ({
-  email: user.email,
-  id: user.id,
-  name: user.name,
-  phone: user.phone,
-  username: user.username,
-  website: user.website,
-  street: user.address.street,
-  city: user.address.city,
-  zipcode: user.address.zipcode,
-  company: user.company.name,
-});
 
 export const useUsersFetch = () => {
   const [users, setUsers] = useState<User[] | null>(null);

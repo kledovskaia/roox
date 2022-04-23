@@ -19,3 +19,16 @@ export const sort: Sort = ({ items, sortBy, orderBy }) => {
   });
   return sortedItems;
 };
+
+export const selectUserData = (user: FetchedUser): User => ({
+  email: user.email,
+  id: user.id,
+  name: user.name,
+  phone: user.phone,
+  username: user.username,
+  website: user.website,
+  street: user.address.street,
+  city: user.address.city,
+  zipcode: user.address.zipcode,
+  company: user.company.name,
+});

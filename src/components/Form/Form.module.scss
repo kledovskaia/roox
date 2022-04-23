@@ -1,0 +1,47 @@
+.form {
+  font-size: 1rem;
+  &__field {
+    & + * {
+      margin-top: 1rem;
+    }
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid #d8d8d8;
+    border-radius: 0.5rem;
+
+    &:disabled {
+      color: rgba(0, 0, 0, 0.3);
+    }
+    &_input {
+      width: 50%;
+      @media screen and (max-width: 40rem) {
+        width: 100%;
+      }
+    }
+    &_textarea {
+      // formik has some inline styles on textarea component
+      width: initial !important;
+      height: 5.5rem !important;
+      resize: none;
+      display: block;
+      align-self: stretch;
+    }
+    &_error {
+      border-color: red;
+    }
+  }
+
+  &__fieldsContainer {
+    padding: 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 0.1rem solid #f3f3f3;
+    border-radius: 0.8rem;
+  }
+  &__buttonsContainer {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
