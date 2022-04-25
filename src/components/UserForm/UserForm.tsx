@@ -1,7 +1,6 @@
 import { FC, memo, useEffect, useState } from 'react';
 import Form from '../Form/Form';
 import * as yup from 'yup';
-import { selectUserData } from '../../helpers';
 
 const fields = {
   name: { label: 'Name', value: '', tag: 'input' },

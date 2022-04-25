@@ -30,7 +30,7 @@ const UserProfile = () => {
       updateUser(updatedUser);
       alert('Updated!');
     },
-    [user]
+    [user, updateUser]
   );
 
   return (

@@ -16,9 +16,12 @@ type Props = {
 };
 
 const Button: FC<Props> = ({ children, action, type, ...modificators }) => {
-  const handleKeyDown = useCallback((e: KeyboardEvent<HTMLButtonElement>) => {
-    if (e.key === 'Enter') action?.();
-  }, []);
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key === 'Enter') action?.();
+    },
+    [action]
+  );
 
   return (
     <button

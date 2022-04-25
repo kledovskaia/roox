@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { selectUserData } from '../helpers';
 
 const url = 'https://jsonplaceholder.typicode.com/users';
 
@@ -43,7 +42,7 @@ export const useUsersFetch = () => {
     }
 
     fetchUsers();
-  }, []);
+  }, [users]);
 
   return { data: users, loading: isLoading, error } as UseFetchUsersResult;
 };

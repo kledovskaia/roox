@@ -13,7 +13,9 @@ export const useUsersSort = (users: FetchedUser[] | null) => {
     if (!sortBy) {
       setSortedUsers(users);
     } else
-      setSortedUsers(helpers.sort({ items: users || [], sortBy, orderBy }));
+      setSortedUsers((sortedUsers) =>
+        helpers.sort({ items: sortedUsers || [], sortBy, orderBy })
+      );
   }, [users, orderBy, sortBy]);
 
   const handleSortTypeChange = useCallback(

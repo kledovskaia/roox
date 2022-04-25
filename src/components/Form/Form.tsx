@@ -3,7 +3,7 @@ import { Formik, Form as FormikForm, Field } from 'formik';
 import { FC, Fragment, memo } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
-import UserForm, { UserSchema } from '../UserForm/UserForm';
+import { UserSchema } from '../UserForm/UserForm';
 import s from './Form.module.scss';
 
 type Props = {
